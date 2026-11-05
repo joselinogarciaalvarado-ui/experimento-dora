@@ -18,3 +18,7 @@ def test_carrera_ci():
 
 def test_carrera_ae():
     assert CARRERAS["AE"] == "Administración de Empresas"
+
+
+def test_carrera_mk():
+    assert CARRERAS["MK"] == "Mercadotecnia"
