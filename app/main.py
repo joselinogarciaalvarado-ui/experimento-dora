@@ -15,7 +15,6 @@ from app.reglas import calcular_prioridad, validar_carrera
 DB_PATH = os.environ.get("DB_PATH", "solicitudes.db")
 VERSION = os.environ.get("APP_VERSION", "dev")
 ENTORNO = os.environ.get("ENTORNO", "desarrollo")
-CLAVE_SESION = os.environ["CLAVE_SESION"] if ENTORNO == "produccion" else "clave-desarrollo"
 
 
 def conectar():
