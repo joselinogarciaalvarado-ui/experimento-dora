@@ -32,3 +32,5 @@ TIPOS["equivalencias"] = 4
 CARRERAS["II"] = "Ingeniería Industrial"
 
 CARRERAS["BF"] = "Banca y Finanzas"
+
+TIPOS["retiro_asignatura"] = 5

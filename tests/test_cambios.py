@@ -68,3 +68,8 @@ def test_carrera_bf():
 
 def test_ruta_version(cliente):
     assert "version" in cliente.get("/version").json()
+
+
+def test_tipo_retiro_asignatura():
+    from app.reglas import calcular_prioridad
+    assert calcular_prioridad("retiro_asignatura", 0) == 5
