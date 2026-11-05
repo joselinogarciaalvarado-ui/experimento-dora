@@ -60,3 +60,7 @@ def test_ruta_carreras(cliente):
 
 def test_ruta_por_cuenta(cliente):
     assert cliente.get("/solicitudes/cuenta/00000000").json() == []
+
+
+def test_carrera_bf():
+    assert CARRERAS["BF"] == "Banca y Finanzas"
