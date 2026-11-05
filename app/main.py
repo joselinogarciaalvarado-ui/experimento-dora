@@ -96,3 +96,10 @@ def obtener_solicitud(solicitud_id: int):
 @app.get("/tipos")
 def listar_tipos():
     return TIPOS
+
+
+@app.get("/estadisticas")
+def estadisticas():
+    with conectar() as con:
+        filas = con.execute("SELECT tipo, COUNT(*) AS total FROM solicitudes GROUP BY tipo").fetchall()
+    return {f["tipo"]: f["total"] for f in filas}

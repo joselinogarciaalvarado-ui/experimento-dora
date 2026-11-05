@@ -48,3 +48,7 @@ def test_carrera_ii():
 
 def test_ruta_tipos(cliente):
     assert "constancia" in cliente.get("/tipos").json()
+
+
+def test_ruta_estadisticas(cliente):
+    assert cliente.get("/estadisticas").status_code == 200
