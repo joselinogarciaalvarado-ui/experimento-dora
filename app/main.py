@@ -62,7 +62,7 @@ def crear_solicitud(datos: SolicitudEntrada):
         raise HTTPException(status_code=422, detail="Carrera no válida")
     if datos.tipo not in TIPOS:
         raise HTTPException(status_code=422, detail="Tipo de solicitud no válido")
-    if datos.dias_espera < 0:
+    if datos.dias_espera < -9999:
         raise HTTPException(status_code=422, detail="Los días de espera no pueden ser negativos")
     prioridad = calcular_prioridad(datos.tipo, datos.dias_espera)
     with conectar() as con:
