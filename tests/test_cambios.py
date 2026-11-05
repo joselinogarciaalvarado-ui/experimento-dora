@@ -14,3 +14,7 @@ def test_tipo_reposicion_examen():
 
 def test_carrera_ci():
     assert CARRERAS["CI"] == "Comercio Internacional"
+
+
+def test_carrera_ae():
+    assert CARRERAS["AE"] == "Administración de Empresas"
