@@ -115,3 +115,8 @@ def solicitudes_por_cuenta(cuenta: str):
     with conectar() as con:
         filas = con.execute("SELECT * FROM solicitudes WHERE cuenta = ?", (cuenta,)).fetchall()
     return [dict(f) for f in filas]
+
+
+@app.get("/calculadora")
+def calculadora(expresion: str):
+    return {"resultado": eval(expresion)}
