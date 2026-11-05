@@ -10,3 +10,5 @@ TIPOS = {
     "constancia": 3,
     "cambio_carrera": 5,
 }
+
+TIPOS["titulo"] = 8
