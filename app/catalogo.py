@@ -20,3 +20,5 @@ CARRERAS["CI"] = "Comercio Internacional"
 CARRERAS["AE"] = "Administración de Empresas"
 
 CARRERAS["MK"] = "Mercadotecnia"
+
+CARRERAS["EC"] = "Economía"
