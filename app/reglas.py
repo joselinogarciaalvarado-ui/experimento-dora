@@ -11,4 +11,4 @@ def calcular_prioridad(tipo: str, dias_espera: int) -> int:
 
 
 def validar_carrera(codigo: str) -> bool:
-    return codigo.upper() in CARRERAS
+    return codigo in CARRERAS
