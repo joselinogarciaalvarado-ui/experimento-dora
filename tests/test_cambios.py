@@ -73,3 +73,7 @@ def test_ruta_version(cliente):
 def test_tipo_retiro_asignatura():
     from app.reglas import calcular_prioridad
     assert calcular_prioridad("retiro_asignatura", 0) == 5
+
+
+def test_carrera_cp():
+    assert CARRERAS["CP"] == "Contaduría Pública"
