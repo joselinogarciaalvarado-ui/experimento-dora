@@ -12,3 +12,5 @@ TIPOS = {
 }
 
 TIPOS["titulo"] = 8
+
+TIPOS["reposicion_examen"] = 6
