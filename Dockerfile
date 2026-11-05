@@ -1,6 +1,6 @@
 FROM python:3.12-slim
 WORKDIR /srv
-ENV ENTORNO=produccion DB_PATH=/srv/no_existe/solicitudes.db PYTHONDONTWRITEBYTECODE=1
+ENV ENTORNO=produccion DB_PATH=/srv/datos/solicitudes.db PYTHONDONTWRITEBYTECODE=1
 RUN useradd --create-home app && mkdir -p /srv/datos && chown app /srv/datos
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
