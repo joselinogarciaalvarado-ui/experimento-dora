@@ -14,3 +14,5 @@ TIPOS = {
 TIPOS["titulo"] = 8
 
 TIPOS["reposicion_examen"] = 6
+
+CARRERAS["CI"] = "Comercio Internacional"

@@ -10,3 +10,7 @@ def test_tipo_titulo():
 def test_tipo_reposicion_examen():
     from app.reglas import calcular_prioridad
     assert calcular_prioridad("reposicion_examen", 0) == 6
+
+
+def test_carrera_ci():
+    assert CARRERAS["CI"] == "Comercio Internacional"
