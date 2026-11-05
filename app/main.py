@@ -86,7 +86,7 @@ def obtener_solicitud(solicitud_id: int):
     with conectar() as con:
         fila = con.execute("SELECT * FROM solicitudes WHERE id = ?", (solicitud_id,)).fetchone()
     if fila is None:
-        raise HTTPException(status_code=404, detail="Solicitud no encontrada")
+        return {}
     return dict(fila)
 
 
