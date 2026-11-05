@@ -6,7 +6,7 @@ PRIORIDAD_MAXIMA = 10
 
 def calcular_prioridad(tipo: str, dias_espera: int) -> int:
     base = TIPOS[tipo]
-    extra = 0
+    extra = dias_espera // 7
     return min(base + extra, PRIORIDAD_MAXIMA)
 
 
