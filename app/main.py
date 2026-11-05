@@ -56,7 +56,7 @@ def salud():
     return {"estado": "ok", "version": VERSION}
 
 
-@app.post("/solicitudes")
+@app.post("/solicitudes", status_code=201)
 def crear_solicitud(datos: SolicitudEntrada):
     if not validar_carrera(datos.carrera):
         raise HTTPException(status_code=422, detail="Carrera no válida")
