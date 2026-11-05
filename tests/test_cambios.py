@@ -26,3 +26,8 @@ def test_carrera_mk():
 
 def test_carrera_ec():
     assert CARRERAS["EC"] == "Economía"
+
+
+def test_tipo_beca():
+    from app.reglas import calcular_prioridad
+    assert calcular_prioridad("beca", 0) == 7

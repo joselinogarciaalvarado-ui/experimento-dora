@@ -22,3 +22,5 @@ CARRERAS["AE"] = "Administración de Empresas"
 CARRERAS["MK"] = "Mercadotecnia"
 
 CARRERAS["EC"] = "Economía"
+
+TIPOS["beca"] = 7
