@@ -40,3 +40,7 @@ def test_carrera_ic():
 def test_tipo_equivalencias():
     from app.reglas import calcular_prioridad
     assert calcular_prioridad("equivalencias", 0) == 4
+
+
+def test_carrera_ii():
+    assert CARRERAS["II"] == "Ingeniería Industrial"

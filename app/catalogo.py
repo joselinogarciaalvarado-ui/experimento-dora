@@ -28,3 +28,5 @@ TIPOS["beca"] = 7
 CARRERAS["IC"] = "Ingeniería Civil"
 
 TIPOS["equivalencias"] = 4
+
+CARRERAS["II"] = "Ingeniería Industrial"
