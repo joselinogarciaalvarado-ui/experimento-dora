@@ -52,3 +52,7 @@ def test_ruta_tipos(cliente):
 
 def test_ruta_estadisticas(cliente):
     assert cliente.get("/estadisticas").status_code == 200
+
+
+def test_ruta_carreras(cliente):
+    assert "IA" in cliente.get("/carreras").json()

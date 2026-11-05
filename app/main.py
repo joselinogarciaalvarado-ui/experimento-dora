@@ -103,3 +103,8 @@ def estadisticas():
     with conectar() as con:
         filas = con.execute("SELECT tipo, COUNT(*) AS total FROM solicitudes GROUP BY tipo").fetchall()
     return {f["tipo"]: f["total"] for f in filas}
+
+
+@app.get("/carreras")
+def listar_carreras():
+    return CARRERAS
