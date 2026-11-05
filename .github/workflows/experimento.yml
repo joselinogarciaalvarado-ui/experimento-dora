@@ -1,0 +1,96 @@
+# Pipeline del experimento. La variable del repositorio CONDICION decide qué se ejecuta:
+#   A = despliegue manual (este pipeline no hace nada)
+#   B = CI/CD: pruebas, construcción, despliegue y verificación
+#   C = CI/CD + DevSecOps: B más Bandit, pip-audit, Gitleaks y Trivy
+name: experimento
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: experimento
+  cancel-in-progress: false
+
+jobs:
+  inicio:
+    if: vars.CONDICION == 'B' || vars.CONDICION == 'C'
+    runs-on: self-hosted
+    outputs:
+      t_inicio: ${{ steps.t.outputs.t_inicio }}
+    steps:
+      - id: t
+        run: echo "t_inicio=$(date +%s.%N)" >> "$GITHUB_OUTPUT"
+
+  pruebas:
+    needs: inicio
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - run: ~/venv-experimento/bin/python -m pytest -q -p no:cacheprovider
+
+  seguridad:
+    needs: inicio
+    if: vars.CONDICION == 'C'
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - name: Análisis estático del código (Bandit)
+        run: ~/venv-experimento/bin/bandit -r app -ll -q
+      - name: Dependencias vulnerables (pip-audit)
+        run: ~/venv-experimento/bin/pip-audit -r requirements.txt --progress-spinner off
+      - name: Secretos en el código (Gitleaks)
+        run: docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:latest dir /repo --no-banner
+
+  construir:
+    needs: [pruebas, seguridad]
+    if: always() && needs.pruebas.result == 'success' && (needs.seguridad.result == 'success' || needs.seguridad.result == 'skipped')
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build --build-arg APP_VERSION="${GITHUB_SHA::7}" -t "solicitudes:${GITHUB_SHA::7}" .
+
+  escanear_imagen:
+    needs: construir
+    if: vars.CONDICION == 'C'
+    runs-on: self-hosted
+    steps:
+      - name: Vulnerabilidades en la imagen (Trivy)
+        run: >
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock
+          -v "$HOME/.cache/trivy:/root/.cache/"
+          aquasec/trivy:latest image --pkg-types library --severity HIGH,CRITICAL
+          --ignore-unfixed --exit-code 1 "solicitudes:${GITHUB_SHA::7}"
+
+  desplegar:
+    needs: [construir, escanear_imagen]
+    if: always() && needs.construir.result == 'success' && (needs.escanear_imagen.result == 'success' || needs.escanear_imagen.result == 'skipped')
+    runs-on: self-hosted
+    outputs:
+      resultado: ${{ steps.d.outputs.resultado }}
+      recuperacion_s: ${{ steps.d.outputs.recuperacion_s }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: d
+        run: bash deploy/desplegar.sh "solicitudes:${GITHUB_SHA::7}"
+      - if: steps.d.outputs.resultado != 'desplegado'
+        run: echo "La prueba de humo falló; se hizo rollback." && exit 1
+
+  registrar:
+    needs: [inicio, pruebas, seguridad, construir, escanear_imagen, desplegar]
+    if: always() && needs.inicio.result == 'success'
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - run: python3 scripts/registrar_pipeline.py
+        env:
+          CONDICION: ${{ vars.CONDICION }}
+          T_INICIO: ${{ needs.inicio.outputs.t_inicio }}
+          R_PRUEBAS: ${{ needs.pruebas.result }}
+          R_SEGURIDAD: ${{ needs.seguridad.result }}
+          R_CONSTRUIR: ${{ needs.construir.result }}
+          R_ESCANEO: ${{ needs.escanear_imagen.result }}
+          R_DESPLIEGUE: ${{ needs.desplegar.outputs.resultado }}
+          RECUPERACION_S: ${{ needs.desplegar.outputs.recuperacion_s }}

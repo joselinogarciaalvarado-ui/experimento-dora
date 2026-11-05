@@ -1,0 +1,31 @@
+cambio,tipo,descripcion
+1,normal,Agregar carrera Ingeniería Industrial
+2,normal,Agregar carrera Ingeniería Civil
+3,normal,Agregar carrera Administración de Empresas
+4,normal,Agregar carrera Contaduría Pública
+5,normal,Agregar carrera Economía
+6,normal,Agregar carrera Mercadotecnia
+7,normal,Agregar carrera Comercio Internacional
+8,normal,Agregar carrera Banca y Finanzas
+9,normal,Agregar tipo reposición de examen
+10,normal,Agregar tipo equivalencias
+11,normal,Agregar tipo retiro de asignatura
+12,normal,Agregar tipo beca
+13,normal,Agregar tipo trámite de título
+14,normal,Ruta GET /carreras
+15,normal,Ruta GET /tipos
+16,normal,Ruta GET /estadisticas
+17,normal,Ruta GET /version
+18,normal,Ruta GET /solicitudes/cuenta/{cuenta}
+19,defecto_pruebas,Prioridad: se pierde el cálculo por semanas de espera
+20,defecto_pruebas,Prioridad: se elimina el tope máximo
+21,defecto_pruebas,Validación de carrera distingue mayúsculas
+22,defecto_pruebas,Crear solicitud deja de responder 201
+23,defecto_pruebas,Se aceptan días de espera negativos
+24,defecto_pruebas,Solicitud inexistente devuelve vacío en lugar de 404
+25,defecto_humo,Ruta de la base de datos inexistente en el contenedor
+26,defecto_humo,El contenedor escucha en un puerto equivocado
+27,defecto_humo,Variable de entorno obligatoria ausente en producción
+28,defecto_seguridad,Dependencia con vulnerabilidades conocidas (Jinja2 2.10)
+29,defecto_seguridad,Token de acceso escrito en el código
+30,defecto_seguridad,Ruta que evalúa expresiones del usuario con eval()

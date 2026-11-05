@@ -1,0 +1,12 @@
+"""Catálogos de la aplicación. Varios cambios del experimento agregan entradas aquí."""
+
+CARRERAS = {
+    "IA": "Informática Administrativa",
+    "IS": "Ingeniería en Sistemas",
+}
+
+# Tipo de solicitud -> prioridad base (1 a 10)
+TIPOS = {
+    "constancia": 3,
+    "cambio_carrera": 5,
+}
