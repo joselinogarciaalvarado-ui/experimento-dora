@@ -44,3 +44,7 @@ def test_tipo_equivalencias():
 
 def test_carrera_ii():
     assert CARRERAS["II"] == "Ingeniería Industrial"
+
+
+def test_ruta_tipos(cliente):
+    assert "constancia" in cliente.get("/tipos").json()

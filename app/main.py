@@ -91,3 +91,8 @@ def obtener_solicitud(solicitud_id: int):
 
 
 # --- Rutas agregadas por los cambios del experimento ---
+
+
+@app.get("/tipos")
+def listar_tipos():
+    return TIPOS
