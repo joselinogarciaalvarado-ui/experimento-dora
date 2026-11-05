@@ -108,3 +108,10 @@ def estadisticas():
 @app.get("/carreras")
 def listar_carreras():
     return CARRERAS
+
+
+@app.get("/solicitudes/cuenta/{cuenta}")
+def solicitudes_por_cuenta(cuenta: str):
+    with conectar() as con:
+        filas = con.execute("SELECT * FROM solicitudes WHERE cuenta = ?", (cuenta,)).fetchall()
+    return [dict(f) for f in filas]

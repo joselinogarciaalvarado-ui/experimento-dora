@@ -56,3 +56,7 @@ def test_ruta_estadisticas(cliente):
 
 def test_ruta_carreras(cliente):
     assert "IA" in cliente.get("/carreras").json()
+
+
+def test_ruta_por_cuenta(cliente):
+    assert cliente.get("/solicitudes/cuenta/00000000").json() == []
