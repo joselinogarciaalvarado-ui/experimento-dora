@@ -24,3 +24,5 @@ CARRERAS["MK"] = "Mercadotecnia"
 CARRERAS["EC"] = "Economía"
 
 TIPOS["beca"] = 7
+
+CARRERAS["IC"] = "Ingeniería Civil"

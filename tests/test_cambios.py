@@ -31,3 +31,7 @@ def test_carrera_ec():
 def test_tipo_beca():
     from app.reglas import calcular_prioridad
     assert calcular_prioridad("beca", 0) == 7
+
+
+def test_carrera_ic():
+    assert CARRERAS["IC"] == "Ingeniería Civil"
