@@ -1,0 +1,18 @@
+
+=== lead_time_s (cambios normales desplegados en todas las condiciones, n = 18) ===
+Friedman: chi2 = 27.000, p = 1.371e-06, W de Kendall = 0.750
+Wilcoxon A vs B: W = 0.0, p ajustada (Bonferroni) = 2.289e-05, diferencia mediana = 21.4 s
+Wilcoxon A vs C: W = 80.5, p ajustada (Bonferroni) = 1, diferencia mediana = 0.7 s
+Wilcoxon B vs C: W = 0.0, p ajustada (Bonferroni) = 2.289e-05, diferencia mediana = -21.1 s
+
+=== duracion_s (cambios normales desplegados en todas las condiciones, n = 18) ===
+Friedman: chi2 = 27.111, p = 1.297e-06, W de Kendall = 0.753
+Wilcoxon A vs B: W = 0.0, p ajustada (Bonferroni) = 2.289e-05, diferencia mediana = 21.5 s
+Wilcoxon A vs C: W = 71.5, p ajustada (Bonferroni) = 1, diferencia mediana = 2.3 s
+Wilcoxon B vs C: W = 0.0, p ajustada (Bonferroni) = 0.0005883, diferencia mediana = -21.6 s
+
+=== Fallo en producción (los 30 cambios en cada condición) ===
+Q de Cochran: Q = 14.000, p = 0.0009119
+McNemar exacta A vs B: p = 0.03125
+McNemar exacta A vs C: p = 0.003906
+McNemar exacta B vs C: p = 0.25

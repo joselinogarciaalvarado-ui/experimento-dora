@@ -1,0 +1,7 @@
+Fecha: 2026-11-05T17:34:21+00:00
+CPU: AMD EPYC 7763 64-Core Processor
+Núcleos: 2
+Memoria: 7.8Gi
+Docker: 29.9.2-2
+Python: Python 3.14.2
+Git: git version 2.56.0

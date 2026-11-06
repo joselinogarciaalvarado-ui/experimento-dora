@@ -1,0 +1,7 @@
+2026-11-05T18:17:29+00:00 Se eliminó un registro duplicado del cambio 13 (redespliegue por error del operador).
+2026-11-05T18:24:21+00:00 Se eliminó una corrección del cambio 7 ejecutada por error (el cambio 7 es normal); se restauró el código y la versión 2c785c4.
+2026-11-05T18:30:38+00:00 Cambio 27: se respondió 's' por error aunque la verificación falló; se eliminó el registro, se restauró ce822a4 y se repitió el despliegue.
+2026-11-05T19:56:39+00:00
+Cambio 27: registros 289daad eliminados; se restauro bd833de y ce822a4
+2026-11-05T20:50:29+00:00
+Condicion A completa (42 registros). Errores de verificacion manual: cambios 25 y 26 (defectos de humo) marcados como desplegados aunque la verificacion fallo; correccion del cambio 22 marcada como fallo_humo (falsa alarma, probable verificacion antes de que el contenedor arrancara). Datos conservados sin modificar.
